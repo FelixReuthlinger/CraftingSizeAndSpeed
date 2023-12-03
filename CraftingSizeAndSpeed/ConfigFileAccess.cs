@@ -20,8 +20,8 @@ internal static class ConfigFileAccess
     internal static string GetFileNameAndPath(string configObjectName, bool isDefaultFile = false)
     {
         string fileName = isDefaultFile
-            ? $"{CraftingConfiguratorPlugin.PluginGuid}.Default.{configObjectName}.yaml"
-            : $"{CraftingConfiguratorPlugin.PluginGuid}.{configObjectName}.yaml";
+            ? $"{CraftingSizeAndSpeedPlugin.PluginGuid}.Default.{configObjectName}.yaml"
+            : $"{CraftingSizeAndSpeedPlugin.PluginGuid}.{configObjectName}.yaml";
         return Path.Combine(Paths.ConfigPath, fileName);
     }
 

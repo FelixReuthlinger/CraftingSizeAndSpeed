@@ -30,7 +30,7 @@ requirements.
 <details>
   <summary>Contact</summary>
 
-* https://github.com/FelixReuthlinger/CraftingStationConfigurator
+* https://github.com/FelixReuthlinger/CraftingSizeAndSpeed
 * Discord: `fluuxxx` (you can find me around some of the Valheim modding discords, too)
 
 </details>

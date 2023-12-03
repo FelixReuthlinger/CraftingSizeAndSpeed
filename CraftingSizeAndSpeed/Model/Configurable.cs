@@ -24,7 +24,7 @@ public class ConfigObject<ConfiguredType, GameType>
     public ConfigObject(string objectName)
     {
         ObjectFile = ConfigFileAccess.GetFileNameAndPath(objectName);
-        ObjectFilesContent = new(CraftingConfiguratorPlugin.ConfigSync, $"{objectName}Content",
+        ObjectFilesContent = new(CraftingSizeAndSpeedPlugin.ConfigSync, $"{objectName}Content",
             ConfigFileAccess.ReadFile(ObjectFile));
         ObjectFilesContent.ValueChanged += OnValueChanged;
         OnValueChanged();

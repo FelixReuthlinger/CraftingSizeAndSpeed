@@ -10,14 +10,14 @@ namespace CraftingSizeAndSpeed
     [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
     [BepInDependency(Jotunn.Main.ModGuid)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.Minor)]
-    internal class CraftingConfiguratorPlugin : BaseUnityPlugin
+    internal class CraftingSizeAndSpeedPlugin : BaseUnityPlugin
     {
         internal const string PluginAuthor = "FixItFelix";
         internal const string PluginGuid = PluginAuthor + "." + PluginName;
         internal const string PluginName = "CraftingSizeAndSpeed";
         internal const string PluginVersion = "1.0.0";
 
-        private static CraftingConfiguratorPlugin _instance = null!;
+        private static CraftingSizeAndSpeedPlugin _instance = null!;
 
         internal static readonly ConfigSync ConfigSync = new(PluginGuid)
         {
