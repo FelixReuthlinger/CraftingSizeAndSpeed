@@ -1,0 +1,10 @@
+﻿{
+  "name": "CraftingConfigurator",
+  "description": "Allows to change some very basic settings of crafting stations like fermenters and smelters.",
+  "version_number": "1.0.0",
+  "website_url": "https://github.com/FelixReuthlinger/CraftingStationConfigurator",
+  "dependencies": [
+    "denikson-BepInExPack_Valheim-5.4.2202",
+    "ValheimModding-Jotunn-2.15.0"
+  ]
+}
