@@ -52,6 +52,7 @@ public class ConfigObject<ConfiguredType, GameType>
             Value = ConfigFileAccess.Deserialize<Dictionary<string, ConfiguredType>>(ObjectFile,
                 ObjectFilesContent.Value);
             Logger.LogInfo($"loaded:\n{ConfigFileAccess.Serialize(Value)}");
+            ConfigureAll();
         }
     }
 
