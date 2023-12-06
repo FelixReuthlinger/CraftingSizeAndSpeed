@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+using BepInEx;
 using JetBrains.Annotations;
 using Jotunn.Managers;
 using ServerSync;
@@ -27,6 +29,19 @@ public class ConfigObject<ConfiguredType, GameType>
         ObjectFilesContent = new(CraftingSizeAndSpeedPlugin.ConfigSync, $"{objectName}Content",
             ConfigFileAccess.ReadFile(ObjectFile));
         ObjectFilesContent.ValueChanged += OnValueChanged;
+        OnValueChanged();
+        FileSystemWatcher watcher = new(Paths.ConfigPath, Path.GetFileName(ObjectFile));
+        watcher.Changed += OnFileChanged;
+        watcher.Created += OnFileChanged;
+        watcher.Renamed += OnFileChanged;
+        watcher.IncludeSubdirectories = true;
+        watcher.SynchronizingObject = ThreadingHelper.SynchronizingObject;
+        watcher.EnableRaisingEvents = true;
+    }
+
+    private void OnFileChanged(object _, FileSystemEventArgs __)
+    {
+        ObjectFilesContent.Value = ConfigFileAccess.ReadFile(ObjectFile);
         OnValueChanged();
     }
 
