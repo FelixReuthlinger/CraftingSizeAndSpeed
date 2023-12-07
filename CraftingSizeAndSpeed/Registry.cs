@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using CraftingSizeAndSpeed.Model;
 using Jotunn.Managers;
 
@@ -29,27 +32,29 @@ public static class Registry
         Smelters.ConfigureAll();
     }
 
+    private static Dictionary<string, T> GetType<T>()
+    {
+        return PrefabManager.Cache.GetPrefabs(typeof(T))
+            .GroupBy(kv => Regex.Replace(kv.Key, @"\(Clone\)", "").Trim())
+            .ToDictionary(
+                group => group.Key,
+                group => (T)Convert.ChangeType(group.First().Value, typeof(T))
+            );
+    }
+
     public static void LoadFromGameWriteFile()
     {
         ConfigFileAccess.WriteFile(ConfigFileAccess.GetFileNameAndPath(BeehiveName, isDefaultFile: true),
-            ConfigFileAccess.Serialize(PrefabManager.Cache.GetPrefabs(typeof(Beehive)).ToDictionary(
-                kv => kv.Key,
-                kv => BeehiveModel.From((Beehive)kv.Value)
-            )));
+            ConfigFileAccess.Serialize(GetType<Beehive>()
+                .ToDictionary(kv => kv.Key, kv => BeehiveModel.From(kv.Value))));
         ConfigFileAccess.WriteFile(ConfigFileAccess.GetFileNameAndPath(CookingStationName, isDefaultFile: true),
-            ConfigFileAccess.Serialize(PrefabManager.Cache.GetPrefabs(typeof(CookingStation)).ToDictionary(
-                kv => kv.Key,
-                kv => CookingStationModel.From((CookingStation)kv.Value)
-            )));
+            ConfigFileAccess.Serialize(GetType<CookingStation>()
+                .ToDictionary(kv => kv.Key, kv => CookingStationModel.From(kv.Value))));
         ConfigFileAccess.WriteFile(ConfigFileAccess.GetFileNameAndPath(FermenterName, isDefaultFile: true),
-            ConfigFileAccess.Serialize(PrefabManager.Cache.GetPrefabs(typeof(Fermenter)).ToDictionary(
-                kv => kv.Key,
-                kv => FermenterModel.From((Fermenter)kv.Value)
-            )));
+            ConfigFileAccess.Serialize(GetType<Fermenter>()
+                .ToDictionary(kv => kv.Key, kv => FermenterModel.From(kv.Value))));
         ConfigFileAccess.WriteFile(ConfigFileAccess.GetFileNameAndPath(SmelterName, isDefaultFile: true),
-            ConfigFileAccess.Serialize(PrefabManager.Cache.GetPrefabs(typeof(Smelter)).ToDictionary(
-                kv => kv.Key,
-                kv => SmelterModel.From((Smelter)kv.Value)
-            )));
+            ConfigFileAccess.Serialize(GetType<Smelter>()
+                .ToDictionary(kv => kv.Key, kv => SmelterModel.From(kv.Value))));
     }
 }
