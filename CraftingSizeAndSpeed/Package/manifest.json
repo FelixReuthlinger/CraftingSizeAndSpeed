@@ -1,10 +1,10 @@
 ﻿{
   "name": "CraftingSizeAndSpeed",
   "description": "Allows to change some very basic settings of crafting stations like fermenters and smelters.",
-  "version_number": "1.0.3",
+  "version_number": "1.0.4",
   "website_url": "https://github.com/FelixReuthlinger/CraftingSizeAndSpeed",
   "dependencies": [
-    "denikson-BepInExPack_Valheim-5.4.2202",
-    "ValheimModding-Jotunn-2.15.0"
+    "ValheimModding-Jotunn-2.20.0",
+    "denikson-BepInExPack_Valheim-5.4.2202"
   ]
 }
