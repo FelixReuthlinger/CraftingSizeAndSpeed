@@ -1,3 +1,4 @@
+* 1.0.5 -> updated dependencies and compiled for Valheim version 0.219.14
 * 1.0.4 -> 
   * updated for Ashlands Valheim version 0.218.15, but no code changed
   * updated jotunn dependency

@@ -15,7 +15,7 @@ namespace CraftingSizeAndSpeed
         internal const string PluginAuthor = "FixItFelix";
         internal const string PluginGuid = PluginAuthor + "." + PluginName;
         internal const string PluginName = "CraftingSizeAndSpeed";
-        internal const string PluginVersion = "1.0.4";
+        internal const string PluginVersion = "1.0.5";
 
         private static CraftingSizeAndSpeedPlugin _instance = null!;
 
